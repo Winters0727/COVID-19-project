@@ -1,5 +1,5 @@
 # COVID-19-project
-
+![python_badge](https://user-images.githubusercontent.com/56329233/76493170-55b38100-6475-11ea-94c8-aaa26f4eb4a1.png)
 ### 질병관리본부(KCDC)의 보도자료에서 제공하는 코로나바이러스감염증(COVID-19)의 일별 현황의 데이터를 웹 크롤링하여 csv 파일화 하는 프로젝트입니다.
 
 ### 파일 별 역할

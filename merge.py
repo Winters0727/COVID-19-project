@@ -17,19 +17,16 @@ def merge():
     for f in file_list:
         if '정례브리핑' in f and f != '코로나바이러스감염증-19 국내 발생 현황(정례브리핑).csv':
             df_temp = pd.read_csv('dataset/' + f, engine='python', encoding='cp949', index_col=[0])
-            df_brief.loc[df_temp.index[0]] = df_temp.iloc[0,:]
+            if df_temp.index[0] not in df_brief.index:
+                df_brief.loc[df_temp.index[0]] = df_temp.iloc[0,:]
         else: 
             if f != '코로나바이러스감염증-19 국내 발생 현황(총계).csv':
                 df_temp = pd.read_csv('dataset/' + f, engine='python', encoding='cp949', index_col=[0])
-                df_total.loc[df_temp.index[0]] = df_temp.iloc[0,:]
-    
-    df_total = df_total.sort_index()
-    df_brief = df_brief.sort_index()
+                if df_temp.index[0] not in df_total.index:
+                    df_total.loc[df_temp.index[0]] = df_temp.iloc[0,:]
 
     df_total.to_csv('dataset/코로나바이러스감염증-19 국내 발생 현황(총계).csv', encoding='cp949')
-    df_total.to_csv('코로나바이러스감염증-19 국내 발생 현황(총계).csv', encoding='cp949')
     df_brief.to_csv('dataset/코로나바이러스감염증-19 국내 발생 현황(정례브리핑).csv', encoding='cp949')
-    df_brief.to_csv('코로나바이러스감염증-19 국내 발생 현황(정례브리핑).csv', encoding='cp949')
 
 if __name__ == '__main__':
     merge()
